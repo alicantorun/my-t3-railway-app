@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useWindowSize } from "usehooks-ts";
 
 interface SidebarContextProps {
   isOpenOnSmallScreens: boolean;
@@ -16,13 +16,16 @@ export function SidebarProvider({
 }: PropsWithChildren<Record<string, unknown>>) {
   const location = isBrowser() ? window.location.pathname : "/";
   const [isOpen, setOpen] = useState(false);
+  const { width } = useWindowSize();
 
-  // Close Sidebar on page change on mobile
+  // Close Sidebar on resize to smallscreen
   useEffect(() => {
-    if (isSmallScreen()) {
+    if (width <= 768) {
+      setOpen(true);
+    } else {
       setOpen(false);
     }
-  }, [location]);
+  }, [width]);
 
   // Close Sidebar on page change on mobile
   useEffect(() => {
@@ -43,6 +46,7 @@ export function SidebarProvider({
     }
 
     document.addEventListener("mousedown", handleMobileTapInsideMain);
+
     return () => {
       document.removeEventListener("mousedown", handleMobileTapInsideMain);
     };

@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   const ctx = trpc.useContext();
   const { data: session, status } = useSession();
   const [message, setMessage] = useState("");
+
   const postMessage = trpc.useMutation("guestbook.postMessage", {
     onMutate: () => {
       ctx.cancelQuery(["guestbook.getAll"]);
