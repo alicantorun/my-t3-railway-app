@@ -1,4 +1,6 @@
 // src/pages/_app.tsx
+import { Flowbite, Spinner } from "flowbite-react";
+
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { loggerLink } from "@trpc/client/links/loggerLink";
 import { withTRPC } from "@trpc/next";
@@ -9,13 +11,17 @@ import type { AppRouter } from "../server/router";
 import type { Session } from "next-auth";
 import "../styles/globals.css";
 
+import { flowbiteTheme as theme } from "../theme";
+
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <Flowbite theme={{ theme }}>
+        <Component {...pageProps} />
+      </Flowbite>
     </SessionProvider>
   );
 };

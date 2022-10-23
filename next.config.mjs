@@ -13,6 +13,10 @@ function defineNextConfig(config) {
 }
 
 export default defineNextConfig({
+  images: {
+    // todo
+    domains: ["flowbite.com", "flowbite.s3.amazonaws.com"],
+  },
   reactStrictMode: true,
   swcMinify: true,
   // Next.js i18n docs: https://nextjs.org/docs/advanced-features/i18n-routing
