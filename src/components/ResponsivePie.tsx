@@ -4,13 +4,6 @@ const MyResponsivePie = ({ data = [] }: any) => {
   const margin = { top: 30, right: 200, bottom: 30, left: 30 };
 
   const styles = {
-    root: {
-      fontFamily: "consolas, sans-serif",
-      textAlign: "center",
-      position: "relative",
-      width: 600,
-      height: 600,
-    },
     totalLabel: {
       fontSize: 24,
     },
@@ -42,7 +35,15 @@ const MyResponsivePie = ({ data = [] }: any) => {
   };
 
   return (
-    <div style={styles.root}>
+    <div
+      style={{
+        fontFamily: "consolas, sans-serif",
+        textAlign: "center",
+        position: "relative",
+        width: 600,
+        height: 600,
+      }}
+    >
       <ResponsivePie
         margin={margin}
         data={data}

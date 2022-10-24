@@ -20,6 +20,8 @@ const Home: NextPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
+  console.log(session);
+
   useEffect(() => {
     if (session && status === "authenticated") {
       router.push("/app");

@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
-import { HiChartPie } from "react-icons/hi";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header";
 import { SidebarProvider } from "../../context/SidebarContext";
 import Sidebar from "../../components/Sidebar";
